@@ -3,14 +3,19 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Button } from "./components/ui/button";
+import { Navigate, Outlet } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { user, isSignedIn, isLoaded } = useUser();
+
+  if (!isSignedIn && isLoaded) {
+    return <Navigate to={"/auth/sign-in"} />;
+  }
 
   return (
     <>
-      <h1 className="text-red-400 font-bold">Subscribe</h1>
-      <Button>Subscribe</Button>
+      <Outlet />
     </>
   );
 }
