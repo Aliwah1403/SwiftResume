@@ -1,9 +1,13 @@
 import React from 'react'
+import Header from '../components/custom/Header'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
+    <>
+      <Header />
+      <div>Dashboard</div>
+    </>
+  );
 }
 
 export default Dashboard
